@@ -10,10 +10,9 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Stackblitz.com errors
+Seeing this WebContainer is only in beta, some things dont work here as it does locally.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Errors:
+The search term should be persistent in the URL does not work.
+The css framework Quasar formats the web-page a tiny bit differently.
