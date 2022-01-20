@@ -1,28 +1,39 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="https://vuejs.org/images/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <q-layout view="lHh lpr lFf" style="background-color: lightgrey;">
+      <q-header elevated>
+        <q-toolbar>
+          <q-avatar icon="menu_book" />
+          <q-toolbar-title>book-app</q-toolbar-title>
+        </q-toolbar>
+
+        <q-tabs v-model="tab">
+          <q-route-tab name="search" label="Landing page" to="/" exact/>
+          <q-route-tab name="menu_book" label="books page" to="/books" exact/>
+        </q-tabs>
+      </q-header>
+
+      <q-page-container>
+        <q-page class="q-pa-md">
+          <Suspense>
+            <template #default>
+               <router-view />
+            </template>
+            <template #fallback>
+              loading...
+            </template>
+          </Suspense>
+        </q-page>
+      </q-page-container>
+    </q-layout>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
+<script lang="ts">
+import { ref } from "vue";
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  setup() {
+    return {
+      tab: ref("search"),
+    };
+  },
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
